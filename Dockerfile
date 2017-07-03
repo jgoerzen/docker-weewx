@@ -2,9 +2,10 @@ FROM jgoerzen/debian-base-security:stretch
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
 ENV WEEWX_VERSION 3.7.1
+# The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \
-    apt-get -y --no-install-recommends install ssh rsync && \
+    apt-get -y --no-install-recommends install ssh rsync fonts-freefont-ttf && \
     /tmp/setup/setup.sh && \
     apt-get -y -u dist-upgrade && \
     apt-get clean && rm -rf /tmp/setup /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
