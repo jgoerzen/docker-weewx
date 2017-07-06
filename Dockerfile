@@ -15,4 +15,3 @@ RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
 
 VOLUME ["/var/lib/weewx"]
 CMD ["/usr/local/bin/boot-debian-base"]
-
