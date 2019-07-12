@@ -34,7 +34,9 @@ You can download with:
 And run with something like this:
 
     docker run -td \
-    --stop-signal=SIGPWR \
+    --stop-signal=SIGRTMIN+3 \
+    --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
+    -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
     --hostname=weewx \
     -v /weatherdir:/var/lib/weewx:rw \
     --name=weewx jgoerzen/weewx
