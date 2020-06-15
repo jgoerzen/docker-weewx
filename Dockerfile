@@ -2,6 +2,7 @@ FROM jgoerzen/debian-base-security:buster
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
 ENV WEEWX_VERSION 3.9.1
+ENV DEBIAN_FRONTEND noninteractive
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \
