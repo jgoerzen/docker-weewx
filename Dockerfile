@@ -6,7 +6,7 @@ ENV WEEWX_VERSION 4.6.0
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \
-    apt-get -y --no-install-recommends install ssh rsync fonts-freefont-ttf && \
+    apt-get -y --no-install-recommends install ssh rsync fonts-freefont-ttf python3-mysqldb && \
     /tmp/setup/setup.sh && \
     apt-get -y -u dist-upgrade && \
     apt-get clean && rm -rf /tmp/setup /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
