@@ -47,7 +47,7 @@ And run with something like this:
 Or with a newer systemd, as in Debian bullseye, on the host:
 
     docker run -td \
-    --stop-signal=SIGPWR \
+    --stop-signal=SIGRTMIN+3 \
     --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
     -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host \
     --hostname=weewx \
