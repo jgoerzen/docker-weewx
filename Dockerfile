@@ -1,4 +1,4 @@
-FROM jgoerzen/debian-base-security:buster
+FROM jgoerzen/debian-base-security:bullseye
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
 ENV WEEWX_VERSION 3.9.1
