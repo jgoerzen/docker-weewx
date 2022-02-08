@@ -1,5 +1,8 @@
 # weewx for Docker
 
+**NOTE: This repo is no longer hosted on Github.  See its
+[new home on salsa](https://salsa.debian.org/jgoerzen/docker-weewx).**
+
 This Docker image provides support for [WeeWX](http://www.weewx.com/).
 Weewx is a simple, easy to use weather station.  It provides
 a seamless upgrade from wview as well, so this is an easily-used
@@ -15,8 +18,8 @@ on the host and presented to the Docker container via ser2net.
 An increasing number of weather stations are network-enabled and
 can communicate directly to this system.
 
-You can view the [documentation for this image](https://github.com/jgoerzen/docker-weewx)
-on its Github page.  This image is based on my [debian-base-security](https://github.com/jgoerzen/docker-debian-base)
+You can view the [documentation for this image](https://salsa.debian.org/jgoerzen/docker-weewx)
+on its Github page.  This image is based on my [debian-base-security](https://salsa.debian.org/jgoerzen/docker-debian-base)
 image, which features automatic security updates to the operating system (though not WeeWX)
 enabled by default.
 
@@ -41,24 +44,34 @@ And run with something like this:
     -v /weatherdir:/var/lib/weewx:rw \
     --name=weewx jgoerzen/weewx
 
+Or with a newer systemd, as in Debian bullseye, on the host:
+
+    docker run -td \
+    --stop-signal=SIGPWR \
+    --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
+    -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host \
+    --hostname=weewx \
+    -v /weatherdir:/var/lib/weewx:rw \
+    --name=weewx jgoerzen/weewx
+
 You almost certainly want to mount something over `/var/lib/weewx` so your
 important data is preserved.  You will also want to have a way to preserve
 the configuration in `/etc/weewx`.  By default, the `HTML_ROOT` value in
 `/etc/weewx/weewx.conf` lists `/var/www/html/weewx`, so this would be an
 excellent volume to export to a webserver container (such as my
-[jgoerzen/debian-base-apache](https://github.com/jgoerzen/docker-debian-base)).
+[jgoerzen/debian-base-apache](https://salsa.debian.org/jgoerzen/docker-debian-base)).
 
 Consult the [WeeWX documentation](http://www.weewx.com/docs.html) for setup steps.
 
 # Logging
 
 Logging can be done either to Docker or in the container; see `DEBBASE_SYSLOG` as
-documented in the [docker-debian-base docs](https://github.com/jgoerzen/docker-debian-base).
+documented in the [docker-debian-base docs](https://salsa.debian.org/jgoerzen/docker-debian-base).
 
 # Source
 
 This is prepared by John Goerzen <jgoerzen@complete.org> and the source
-can be found at https://github.com/jgoerzen/docker-weewx
+can be found at https:///jgoerzen/docker-weewx
 
 # Security Status
 

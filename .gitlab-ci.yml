@@ -1,0 +1,21 @@
+docker-build-master:
+  # Official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - umask
+    - ls -lR
+    - umask 0022
+    - umask
+    - chmod -R og-w .
+    - docker build -t jgoerzen/weewx .
+    - docker tag jgoerzen/weewx jgoerzen/weewx:4.6.0
+    - docker push jgoerzen/weewx
+    - docker push jgoerzen/weewx:4.6.0
+  only:
+    - main
+
