@@ -1,7 +1,8 @@
 FROM jgoerzen/debian-base-security:bullseye
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
-ENV WEEWX_VERSION 3.9.1
+# UPDATE CI ALSO
+ENV WEEWX_VERSION 4.6.0
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \
