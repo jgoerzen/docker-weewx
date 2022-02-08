@@ -3,6 +3,7 @@ MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
 # UPDATE CI ALSO WHEN UPDATING VERSION
 ENV WEEWX_VERSION 4.6.0
+ENV DEBIAN_FRONTEND noninteractive
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \
