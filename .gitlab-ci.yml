@@ -17,5 +17,5 @@ docker-build-master:
     - docker push jgoerzen/weewx
     - docker push jgoerzen/weewx:4.6.0
   only:
-    - main
+    - master
 
