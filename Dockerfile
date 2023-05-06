@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \
-    apt-get -y --no-install-recommends install ssh rsync fonts-freefont-ttf fonts-dejavu python3-mysqldb && \
+    apt-get -y --no-install-recommends install ssh rsync fonts-freefont-ttf fonts-dejavu python3-mysqldb python3-ephem && \
     /tmp/setup/setup.sh && \
     apt-get -y -u dist-upgrade && \
     apt-get clean && rm -rf /tmp/setup /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
