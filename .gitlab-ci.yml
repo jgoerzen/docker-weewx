@@ -13,9 +13,9 @@ docker-build-master:
     - umask
     - chmod -R og-w .
     - docker build -t jgoerzen/weewx .
-    - docker tag jgoerzen/weewx jgoerzen/weewx:4.6.0
+    - docker tag jgoerzen/weewx jgoerzen/weewx:4.10.2
     - docker push jgoerzen/weewx
-    - docker push jgoerzen/weewx:4.6.0
+    - docker push jgoerzen/weewx:4.10.2
   only:
     - master
 
