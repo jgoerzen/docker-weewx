@@ -15,7 +15,17 @@ sha256sum -c < sums
 
 # Expect dpkg to fail due to lack of prereqs
 #
-# Have to supply USER here due to a bug
-USER=root dpkg -i "python3-weewx_${WEEWX_VERSION}-1_all.deb" || apt-get -y --no-install-recommends -f install
+# Due to a bug, usermod is not going to work.
+#
+# Used to just run:
+#
+# dpkg -i "python3-weewx_${WEEWX_VERSION}-1_all.deb" || apt-get -y --no-install-recommends -f install
+#
+# That dpkg -i is expected to fail due to missing deps.  Split it out to handle this
+# weird usermod call.
+dpkg -i "python3-weewx_${WEEWX_VERSION}-1_all.deb" || true
+sed -i 's/usermod/echo/g' /var/lib/dpkg/info/weewx.postinst
+apt-get -y --no-install-recommends -f install
+
 rm "python3-weewx_${WEEWX_VERSION}-1_all.deb"
 
