@@ -39,17 +39,17 @@ And run with something like this:
     docker run -td \
     --stop-signal=SIGRTMIN+3 \
     --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
-    -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+    -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host \
     --hostname=weewx \
     -v /weatherdir:/var/lib/weewx:rw \
     --name=weewx jgoerzen/weewx
 
-Or with a newer systemd, as in Debian bullseye, on the host:
+Or, on al older system (pre-bullseye):
 
     docker run -td \
     --stop-signal=SIGRTMIN+3 \
     --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
-    -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host \
+    -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
     --hostname=weewx \
     -v /weatherdir:/var/lib/weewx:rw \
     --name=weewx jgoerzen/weewx
@@ -80,7 +80,7 @@ WeeWX, however, does not have such a feature.
 
 # Copyright
 
-Docker scripts, etc. are Copyright (c) 2017 John Goerzen.  
+Docker scripts, etc. are Copyright (c) 2017-2024 John Goerzen.  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
