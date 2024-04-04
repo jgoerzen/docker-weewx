@@ -23,6 +23,8 @@ sha256sum -c < sums
 #
 # That dpkg -i is expected to fail due to missing deps.  Split it out to handle this
 # weird usermod call.
+#
+# Bug is https://github.com/weewx/weewx/issues/952
 dpkg -i "python3-weewx_${WEEWX_VERSION}-1_all.deb" || true
 sed -i 's/usermod/echo/g' /var/lib/dpkg/info/weewx.postinst
 apt-get -y --no-install-recommends -f install
