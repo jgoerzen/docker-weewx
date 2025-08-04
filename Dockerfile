@@ -1,8 +1,8 @@
-FROM jgoerzen/debian-base-security:bookworm
+FROM jgoerzen/debian-base-security:trixie
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
 # UPDATE CI ALSO WHEN UPDATING VERSION
-ENV WEEWX_VERSION 5.0.2
+ENV WEEWX_VERSION 5.1.0
 ENV DEBIAN_FRONTEND noninteractive
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
