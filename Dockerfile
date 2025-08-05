@@ -1,8 +1,8 @@
 FROM jgoerzen/debian-base-security:trixie
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 COPY setup/ /tmp/setup/
-# UPDATE CI ALSO WHEN UPDATING VERSION
-ENV WEEWX_VERSION 5.1.0
+# UPDATE CI ALSO WHEN UPDATING VERSION, unless it is just the Debian appendix
+ENV WEEWX_VERSION 5.1.0-3
 ENV DEBIAN_FRONTEND noninteractive
 # The font file is used for the generated images
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
