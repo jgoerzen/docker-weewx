@@ -14,19 +14,7 @@ wget "http://www.weewx.com/downloads/released_versions/python3-weewx_${WEEWX_VER
 sha256sum -c < sums
 
 # Expect dpkg to fail due to lack of prereqs
-#
-# Due to a bug, usermod is not going to work.
-#
-# Used to just run:
-#
-# dpkg -i "python3-weewx_${WEEWX_VERSION}-1_all.deb" || apt-get -y --no-install-recommends -f install
-#
-# That dpkg -i is expected to fail due to missing deps.  Split it out to handle this
-# weird usermod call.
-#
-# Bug is https://github.com/weewx/weewx/issues/952
 dpkg -i "python3-weewx_${WEEWX_VERSION}-1_all.deb" || true
-sed -i 's/usermod/echo/g' /var/lib/dpkg/info/weewx.postinst
 apt-get -y --no-install-recommends -f install
 
 rm "python3-weewx_${WEEWX_VERSION}-1_all.deb"
