@@ -10,7 +10,7 @@ cd /tmp/setup
 
 adduser --uid 995 --gecos 'weewx' --system --group weewx
 
-wget "http://www.weewx.com/downloads/released_versions/python3-weewx_${WEEWX_VERSION}-1_all.deb"
+wget "http://www.weewx.com/downloads/released_versions/python3-weewx_${WEEWX_VERSION}-3_all.deb"
 sha256sum -c < sums
 
 # Expect dpkg to fail due to lack of prereqs
