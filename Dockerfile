@@ -15,5 +15,6 @@ RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     mv /usr/sbin/policy-rc.d /usr/sbin/policy-rc.d.disabled && \
     mkdir -p /var/www/html/weewx
 
+COPY default-weewx /etc/default/weewx
 VOLUME ["/var/lib/weewx"]
 CMD ["/usr/local/bin/boot-debian-base"]
